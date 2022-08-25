@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>サンプルページ</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<style type="text/css">
+		body {
+			font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro","Hiragino Kaku Gothic",sans-serif;
+		}
+
+		/* -------------------------------------------------------------------------------- */
+		/* おみくじ用の装飾（これは今回のメインではありませんがサンプルの表示には必要です） */
+		/* （過去記事 http://allabout.co.jp/gm/gc/23960/ 参照）                             */
+		/* -------------------------------------------------------------------------------- */
+		div.omikujibase {
+			background-image: url("docplate.jpg");
+			background-repeat: no-repeat;
+			background-position: top left;
+			width: 149px;
+			height: 139px;
+			line-height: 1.2;
+			margin: 0px; padding: 0px;
+		}
+		div.omikujibase p.kRes {
+			margin: 0px;
+			padding: 5px 0px 0px 5px;
+			font-size: 21pt;
+			line-height: 1.2;
+		}
+		div.omikujibase p.kCom {
+			margin: 0px;
+			padding: 3px 89px 0px 3px;
+			font-size: 8pt;
+			line-height: 1.2;
+		}
+		p.button {
+			width: 149px;
+			text-align: center;
+			margin: 5px 0px;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+
+		// 関数
+		function ShowKuji(kRes,kCom) {
+
+			// ========================================
+			// 下に羅列した曲数を下記に指定する！！！(今は１１曲）
+			// ========================================
+			var kuji = Math.floor(Math.random()*11);
+
+			// くじを表示
+			document.getElementById(kRes).innerHTML = kuji;
+			var SoundA = "Sound" + String( kuji ); //引数に数値を代入
+			document.getElementById(kCom).innerHTML = SoundA;
+
+			// ========================================
+			// 効果音を鳴らす（★今回のメインはこれ★）
+			// ========================================
+			document.getElementById(SoundA).play();
+
+			//ランダムでなく、決まった曲を鳴らす場合は下記
+			//document.getElementById("Sound9").play();
+
+		}
+
+
+	</script>
+</head>
+<body>
+
+	<!-- =========================== -->
+	<!-- ▼効果音を準備するaudio要素 -->
+	<!-- =========================== -->
+
+    <audio id="Sound0" preload="auto">
+        <source src='./流れ弾.mp3' type="audio/mp3">
+    </audio>
+ 
+   <audio id="Sound1" preload="auto">
+        <source src='./無言の宇宙.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound2" preload="auto">
+        <source src= './僕のジレンマ.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound3" preload="auto">
+        <source src='./車間距離.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound4" preload="auto">
+        <source src='./思ったより寂しくない.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound5" preload="auto">
+        <source src='./五月雨よ.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound6" preload="auto">
+        <source src='./偶然の答え.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound7" preload="auto">
+        <source src='./なぜ恋をして来なかったんだろう？.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound8" preload="auto">
+        <source src='./Dead End.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound9" preload="auto">
+        <source src='./nobodysfault.mp3' type="audio/mp3">
+    </audio>
+
+    <audio id="Sound10" preload="auto">
+        <source src='./BAN.mp3' type="audio/mp3">
+    </audio>
+
+
+	<!-- ====================================================================== -->
+	<!-- ▼おみくじ表示領域（過去記事 http://allabout.co.jp/gm/gc/23960/ 参照） -->
+	<!-- ====================================================================== -->
+
+	<div class="playground">
+
+		<!-- ――――――― -->
+		<!-- ▼おみくじ表示 -->
+		<!-- ――――――― -->
+
+		<div class="omikujibase">
+			<p class="kRes" id="KujiRes">？？</p>
+			<p class="kCom" id="KujiCom">＊＊＊</p>
+		</div>
+
+		<!-- ―――――――― -->
+		<!-- ▼おみくじボタン -->
+		<!-- ―――――――― -->
+
+		<p class="button">
+			<input type="button" onclick="ShowKuji( 'KujiRes', 'KujiCom');" value="音楽再生" />
+		</p>
+		<p>クリックする<br />
+
+
+	</div>
+
+</body>
+</html>
